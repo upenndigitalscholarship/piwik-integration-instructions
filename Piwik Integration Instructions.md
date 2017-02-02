@@ -1,6 +1,6 @@
 # Piwik Integration Instructions
 
-* Sasha Renninger
+Sasha Renninger
 
 For each site that requires integration:
 
@@ -34,9 +34,24 @@ For each site that requires integration:
 
     7. Scroll down to the "Javascript Tracking Code" (it should look like this):
 
-![image alt text](image_0.png)
+``` <!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  // tracker methods like "setCustomDimension" should be called before "trackPageView"
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//upenndigitalscholarship.org/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '10']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+```
 
-    8. Copy the entire thing, including comments (you will be using this several times, so please refer back to it every time the instructions say to "paste the Piwik Javascript Tracking Code")
+   8. Copy the entire thing, including comments (you will be using this several times, so please refer back to it every time the instructions say to "paste the Piwik Javascript Tracking Code")
 
 3. **For Omeka sites:**
 
@@ -127,6 +142,18 @@ For each site that requires integration:
         29. Paste the Piwik Javascript Tracking Code for this site in the "Footer Code" box
 
         30. **DO NOT FORGET TO CLICK "Save" IN THE UPPER RIGHT**
+        
+6. **For Jekyll sites:**
+
+    12. Go to Jekyll repo on Github
+
+        26. Click on  the “_includes” directory
+
+        27. Open “head.html” to edit
+
+        28. Find the closing </head> tag
+
+        29. Right above the </head> tag, paste the Piwik Javascript Tracking Code for this site       
 
 7. After you have finished pasting in the tracking code, browse around to a couple of pages on the website and then go back to the Piwik dashboard to make sure it is recording your activity (To get to the dashboard for a site, click on "All websites" and then the name of the website you are working on)
 
